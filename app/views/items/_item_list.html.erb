@@ -1,0 +1,8 @@
+<% if @items.present? %>
+  <% @items.each do |item| %>
+    <div class="list">
+      <%= item["title"]%>  
+      
+    </div>
+  <% end %>
+<% end %>
