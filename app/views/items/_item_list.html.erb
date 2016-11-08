@@ -1,8 +1,13 @@
 <% if @items.present? %>
   <% @items.each do |item| %>
+    <% if item["large_image"] == nil %>
+      <%= link_to (image_tag("no-image.jpg", style: "width: 70px;height: 100px;display: inline-block;")), item["url"] %>
+      <%= item["title"] %>
+    <% elsif %>
     <div class="list">
-      <%= item["title"]%>  
-      
+      <%= link_to (image_tag(item["large_image"], style: "width: 70px;height: 100px;display: inline-block;")), item["url"] %>
+      <%= item["title"] %>
     </div>
+    <% end %>
   <% end %>
 <% end %>
