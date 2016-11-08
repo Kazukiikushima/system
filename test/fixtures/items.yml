@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  large_image: MyString
+  url: MyString
+  publisher: MyString
+  publish_date: 2016-11-08
+  price: 1
+  genre: MyString
+  number: 1
+  author: MyString
+  air_regi: MyString
+  isbn: 1
+  stage: MyString
+  arrival_day: 2016-11-08
+  return_period: 1
+
+two:
+  title: MyString
+  large_image: MyString
+  url: MyString
+  publisher: MyString
+  publish_date: 2016-11-08
+  price: 1
+  genre: MyString
+  number: 1
+  author: MyString
+  air_regi: MyString
+  isbn: 1
+  stage: MyString
+  arrival_day: 2016-11-08
+  return_period: 1
