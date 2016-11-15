@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     member do
       post 'reject'
       post 'order'
+      post 'complete'
+    end
+    
+    collection do
+      get 'confirm'
     end
   end
   

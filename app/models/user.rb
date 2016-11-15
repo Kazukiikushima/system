@@ -21,5 +21,11 @@ class User < ApplicationRecord
     stage_logs.create(item_id: item.id, active: "ordering", date: Date.today, number: number)
   end
   
+  def confirmed(item, day, number)
+    require 'date'
+    a = Date.today + day
+    stage_logs.create(item_id: item.id, active: "confirmed", date: Date.today, return_date: a, number: number)
+  end
+  
   
 end

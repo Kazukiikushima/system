@@ -3,7 +3,7 @@
     <% if item["large_image"] == nil %>
       <%= link_to (image_tag("no-image.jpg", style: "width: 70px;height: 100px;display: inline-block;")), item["url"] %>
       <%= item["title"] %>
-      <%= link_to "発送候補に入れる" , stage_logs_path(isbn: item['isbn'] ) ,
+      <%= link_to "発注候補に入れる" , stage_logs_path(isbn: item['isbn'] ) ,
                       :class => "btn-have btn btn-warning btn-sm",
                       :remote => true,
                       :method => :post %>
@@ -11,7 +11,7 @@
     <div class="list">
       <%= link_to (image_tag(item["large_image"], style: "width: 80px;height: 120px;display: inline-block;")), item["url"] %>
       <%= item["title"] %>
-      <%= link_to "発送候補に入れる" , stage_logs_path(isbn: item['isbn'] ) ,
+      <%= link_to "発注候補に入れる" , stage_logs_path(isbn: item['isbn'] ) ,
                       :class => "btn-have btn btn-warning btn-sm",
                       :remote => true,
                       :method => :post %>

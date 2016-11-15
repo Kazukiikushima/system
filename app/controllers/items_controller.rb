@@ -58,14 +58,27 @@ class ItemsController < ApplicationController
   
   def order
       @item = Item.find(params[:id])
-      p = params[:a]
-      a = p.to_i
-      number = item["number"] + a
+      a = params[:a].to_i
+      b = @item["number"].to_i
+      number = a + b
       @item.update(stage: "ordering", number: number)
-      current_user.ordering(@item,number)
+      current_user.ordering(@item,a)
       redirect_to stage_logs_path
   end
   
+  def confirm
+    @items = Item.confirm
+  end
+  
+  def complete
+    @item = Item.find(params[:id])
+    stage = StageLog.where(item_id: @item["id"], active: "ordering").last
+      a = params[:a].to_i
+      b = stage.number
+      @item.update(stage: "confirmed" )
+      current_user.confirmed(@item,a,b)
+      redirect_to stage_logs_path
+  end
   
   
 end

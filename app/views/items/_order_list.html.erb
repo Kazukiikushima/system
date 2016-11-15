@@ -1,0 +1,26 @@
+<% if @items.present? %>
+  <% @items.each do |item| %>
+    <% stage = StageLog.where(item_id: item.id, active: "ordering").last %>
+    <% if item.large_image == nil %>
+     <div class="list">
+       <%= link_to (image_tag("no-image.jpg", style: "width: 70px;height: 100px;display: inline-block;")), item.url %>
+       タイトル：<%= link_to item.title, item.url %>｜ISBN：<%= item.isbn %>
+       <p>発送日：<%= stage.date %>｜冊数：<%= stage.number %></p>
+       <p><%= form_tag complete_item_path(item.id) , method: :post do %>
+       返品期限：<%= number_field_tag :a , params[:a],value: 90,min: 1  , required: true %>日後
+       <%= submit_tag "確認", name: nil , class: "btn btn-success", data: { disable_with: "確認..."} %>
+       <% end %></p><br>
+     </div>
+    <% elsif %>
+     <div class="list">
+       <%= link_to (image_tag(item.large_image, style: "width: 70px;height: 100px;display: inline-block;")), item.url %>
+       タイトル：<%= link_to item.title, item.url %>｜ISBN：<%= item.isbn %>
+       <p>発送日：<%= stage.date %>｜冊数：<%= stage.number %></p>
+       <p><%= form_tag complete_item_path(item.id) , method: :post do %>
+       返品期限：<%= number_field_tag :a , params[:a],value: 90,min: 1  , required: true %>日後
+       <%= submit_tag "確認", name: nil , class: "btn btn-success", data: { disable_with: "確認..."} %>
+       <% end %></p><br>
+     </div>
+    <% end %>
+  <% end %>
+<% end %>
