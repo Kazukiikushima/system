@@ -1,10 +1,20 @@
 <% if @stage_logs.present? %>
   <% @stage_logs.each do |log| %>
-    <div class="list">
-      <%= log.user.name %>さんが
-      <%= link_to log.item.title, log.item.url %>を
-      <%= log.active %>しました。
-      <p><%= log.date %></p>
-    </div><br>
+    <% if log.active == "ordering" %>
+      <div class="list">
+        <%= log.user.name %>さんが
+        <%= link_to log.item.title, log.item.url %>を
+        <%= log.number %>冊
+        <%= log.active %>しました。
+        <p><%= log.date %></p>
+      </div><br>
+    <% elsif %>
+      <div class="list">
+        <%= log.user.name %>さんが
+        <%= link_to log.item.title, log.item.url %>を
+        <%= log.active %>しました。
+        <p><%= log.date %></p>
+      </div><br>
+    <% end %>
   <% end %>
 <% end %>

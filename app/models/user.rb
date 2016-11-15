@@ -16,5 +16,10 @@ class User < ApplicationRecord
     stage_logs.create(item_id: item.id, active: "unstaging", date: Date.today)
   end
   
+  def ordering(item, number)
+    require 'date'
+    stage_logs.create(item_id: item.id, active: "ordering", date: Date.today, number: number)
+  end
+  
   
 end

@@ -6,14 +6,22 @@
        <%= link_to (image_tag("no-image.jpg", style: "width: 70px;height: 100px;display: inline-block;")), item.url %>
        <%= item.title %>
        <p><%= user.name %>さんが発想候補に入れました。</p>
-       <p><%= link_to "発送候補から外す", reject_item_path(item.id), method: :post %></p><br>
+       <p><%= link_to "発送候補から外す", reject_item_path(item.id), method: :post %>｜
+       <%= form_tag order_item_path(item.id) , method: :post do %>
+       <%= number_field_tag :a , params[:a], required: false %>冊
+       <%= submit_tag "発送", name: nil , class: "btn btn-success", data: { disable_with: "発送中..."} %>
+       <% end %></p><br>
      </div>
     <% elsif %>
      <div class="list">
        <%= link_to (image_tag(item.large_image, style: "width: 70px;height: 100px;display: inline-block;")), item.url %>
        <%= item.title %>
        <p><%= user.name %>さんが発想候補に入れました。</p>
-       <p><%= link_to "発送候補から外す", reject_item_path(item.id), method: :post %></p><br>
+       <p><%= link_to "発送候補から外す", reject_item_path(item.id), method: :post %>｜
+       <%= form_tag order_item_path(item.id) , method: :post do %>
+       <%= number_field_tag :a , params[:a], min: 1 , required: true %>冊
+       <%= submit_tag "発送", name: nil , class: "btn btn-success", data: { disable_with: "発送中..."} %>
+       <% end %></p><br>
      </div>
     <% end %>
   <% end %>

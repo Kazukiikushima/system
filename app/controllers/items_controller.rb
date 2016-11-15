@@ -57,7 +57,13 @@ class ItemsController < ApplicationController
   end
   
   def order
-    
+      @item = Item.find(params[:id])
+      p = params[:a]
+      a = p.to_i
+      number = item["number"] + a
+      @item.update(stage: "ordering", number: number)
+      current_user.ordering(@item,number)
+      redirect_to stage_logs_path
   end
   
   
