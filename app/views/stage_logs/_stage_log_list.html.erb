@@ -1,0 +1,10 @@
+<% if @stage_logs.present? %>
+  <% @stage_logs.each do |log| %>
+    <div class="list">
+      <%= log.user.name %>さんが
+      <%= link_to log.item.title, log.item.url %>を
+      <%= log.active %>しました。
+      <p><%= log.date %></p>
+    </div><br>
+  <% end %>
+<% end %>

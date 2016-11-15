@@ -6,6 +6,11 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- jQuery読み込み -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- BootstrapのJS読み込み -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -18,11 +23,12 @@
           deviseにより自動で作成されてますので、rake routesで確認できます -->
          Logged in as <strong><%= current_user.name %></strong>.
          <%= link_to 'プロフィール変更', edit_user_registration_path %> |
-         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> |
        <% else %>
          <%= link_to "サインイン", new_user_registration_path %> |
-         <%= link_to "ログイン", new_user_session_path %>
+         <%= link_to "ログイン", new_user_session_path %> |
        <% end %>
+       <%= link_to "Home", root_url %>
      </nav>
     </header>
     

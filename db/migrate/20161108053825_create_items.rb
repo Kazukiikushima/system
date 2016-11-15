@@ -17,6 +17,9 @@ class CreateItems < ActiveRecord::Migration[5.0]
       t.integer :return_period
 
       t.timestamps
+      
+      add_index :items, :isbn,                unique: true
+      add_index :items, :url,                 unique: true
     end
   end
 end

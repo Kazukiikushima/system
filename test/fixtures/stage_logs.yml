@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  active: MyString
+  user: one
+  item: one
+  date: 2016-11-11
+  number: 1
+
+two:
+  active: MyString
+  user: two
+  item: two
+  date: 2016-11-11
+  number: 1

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  def search
+  def new
     if params[:keyword].present?
       #　デバックログ出力するために記述
       Amazon::Ecs.debug = true
@@ -17,12 +17,13 @@ class ItemsController < ApplicationController
       # 本のタイトル,画像URL, 詳細ページURLの取得
       @items = []
       res.items.each do |item|
-        itemz = {}
-        itemz["title"] = item.get('ItemAttributes/Title')
+        items = {}
+        items["title"] = item.get('ItemAttributes/Title')
           
-        itemz["large_image"] =  item.get('LargeImage/URL')
-        itemz["url"]  = item.get('DetailPageURL')
-        @items << itemz
+        items["large_image"] =  item.get('LargeImage/URL')
+        items["url"]  = item.get('DetailPageURL')
+        items["isbn"]  = item.get('ItemAttributes/EAN')
+        @items << items
       end
     end
     if params[:isbn]
@@ -38,12 +39,27 @@ class ItemsController < ApplicationController
       # 本のタイトル,画像URL, 詳細ページURLの取得
       @items = []
       res.items.each do |item|
-        itemz = {}
-        itemz["title"] = item.get('ItemAttributes/Title')
-        itemz["large_image"] =  item.get('LargeImage/URL')
-        itemz["url"]  = item.get('DetailPageURL')
-        @items << itemz
+        items = {}
+        items["title"] = item.get('ItemAttributes/Title')
+        items["large_image"] =  item.get('LargeImage/URL')
+        items["url"]  = item.get('DetailPageURL')
+        items["isbn"]  = item.get('ItemAttributes/EAN')
+        @items << items
       end
     end
   end
+  
+  def reject
+      @item = Item.find(params[:id])
+      @item.update(stage: nil )
+      current_user.unstaged(@item)
+      redirect_to root_url
+  end
+  
+  def order
+    
+  end
+  
+  
+  
 end

@@ -1,0 +1,20 @@
+<% if @stages.present? %>
+  <% @stages.each do |item| %>
+    <% user = StageLog.where(item_id: item.id, active: "staging").first.user %>
+    <% if item.large_image == nil %>
+     <div class="list">
+       <%= link_to (image_tag("no-image.jpg", style: "width: 70px;height: 100px;display: inline-block;")), item.url %>
+       <%= item.title %>
+       <p><%= user.name %>さんが発想候補に入れました。</p>
+       <p><%= link_to "発送候補から外す", reject_item_path(item.id), method: :post %></p><br>
+     </div>
+    <% elsif %>
+     <div class="list">
+       <%= link_to (image_tag(item.large_image, style: "width: 70px;height: 100px;display: inline-block;")), item.url %>
+       <%= item.title %>
+       <p><%= user.name %>さんが発想候補に入れました。</p>
+       <p><%= link_to "発送候補から外す", reject_item_path(item.id), method: :post %></p><br>
+     </div>
+    <% end %>
+  <% end %>
+<% end %>
